@@ -12,7 +12,9 @@ class GroupStageScreen(tk.Frame):
         nextButton0 = tk.Button(btnFrame,
                                 text='Next',
                                 command=self.master.showNextScreen)
-        nextButton0.grid(row=1, column=0)
+        nextButton0.grid(row=0, column=1)
+        prevButton0 = tk.Button(btnFrame, text='Prev', command=self.master.showPrevScreen)
+        prevButton0.grid(row=0, column=0)
 
         # Create a frame
         screenFrame = tk.Frame(self)

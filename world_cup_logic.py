@@ -212,7 +212,6 @@ def main():
 
     wc = WorldCup(rankings)
 
-    print("Pots:")
     for pot in wc.pots:
         print(pot)
     print("-" * 50)

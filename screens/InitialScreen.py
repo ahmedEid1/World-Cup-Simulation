@@ -5,7 +5,7 @@ class InitialScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
 
-        self.canvas = tk.Canvas(self, width=900, height=500, bg="white")
+        self.canvas = tk.Canvas(self, width=1000, height=500, bg="white")
         self.canvas.pack()
 
         self.x = 500
@@ -19,7 +19,7 @@ class InitialScreen(tk.Frame):
 
         self.index = 0
 
-        self.width = 900
+        self.width = 1000
         self.height = 500
         self.x = 10
         self.y = 250
@@ -31,7 +31,7 @@ class InitialScreen(tk.Frame):
 
     def write_text(self):
         if self.index == 0:
-            self.width = 900
+            self.width = 1000
             self.height = 500
             self.x = 200
             self.y = 200
