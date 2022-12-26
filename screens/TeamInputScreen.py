@@ -22,13 +22,12 @@ class TeamInputScreen(tk.Frame):
             rankLabel = tk.Label(inputFrame, text=f'Team {i}:')
             rankLabel.grid(row=row, column=col * 2, padx=5, pady=5)
             teamField = tk.Entry(inputFrame)
-            teamField.insert(0, "name, points")
+            teamField.insert(0, "name, ranks")
 
             on_click_id = teamField.bind('<Button-1>', lambda event, teamField=teamField : self.on_click(event, teamField))
             teamField.grid(row=row, column=col * 2 + 1, padx=5, pady=5)
             self.teamFields.append(teamField)
 
-        # Create a button to generate random values for the fields
         randomButton = tk.Button(inputFrame, text='Generate Random Values', command=self.generateRandom)
         randomButton.grid(row=8, column=0, padx=5, pady=5)
 
@@ -39,13 +38,12 @@ class TeamInputScreen(tk.Frame):
         # Generate a list of random team names that are unique
         names = ['Spain', 'Germany', 'Brazil', 'Argentina', 'France', 'Italy', 'England', 'Netherlands', 'Portugal', 'Belgium', 'Croatia', 'Switzerland', 'Poland', 'Denmark', 'Mexico', 'Uruguay', 'Colombia', 'Chile', 'USA', 'Peru', 'Ecuador', 'Paraguay', 'Bolivia', 'Venezuela', 'Honduras', 'Costa Rica', 'Panama', 'Jamaica', 'Trinidad and Tobago', 'Haiti', 'Canada', 'Cuba']
         random.shuffle(names)
-        points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
-        random.shuffle(points)
+        ranks = [i + 1 for i in range(32)]
+        random.shuffle(ranks)
 
         for i, field in enumerate(self.teamFields):
             field.delete(0, tk.END)
-            field.insert(0, f"{names[i]}, {points[i]}")
-
+            field.insert(0, f"{names[i]}, {ranks[i]}")
 
 
     def on_click(self, event, entry):
@@ -67,7 +65,6 @@ class TeamInputScreen(tk.Frame):
         if len(set([l[0] for l in teams])) != 32:
             messagebox.showerror('Error', 'Please enter 32 unique team names.')
         else:
-
             for field in self.teamFields:
                 field.delete(0, tk.END)
 

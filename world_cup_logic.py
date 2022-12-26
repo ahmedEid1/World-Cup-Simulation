@@ -26,8 +26,7 @@ class WorldCup:
         # The first and second places of the FIFA World Cup.
         self.first_place, self.second_place = self.final_result(self.semi_finals)
 
-    # ---------------------------------------------- #
-    def generate_matches(self, teams):
+    def generate_matches(self, teams, randomSelect=True):
         """Generate the matches for a stage of the FIFA World Cup.
 
         Args:
@@ -37,8 +36,12 @@ class WorldCup:
             list: A list of tuples, each containing two teams. The number of tuples
                 is equal to half the number of teams.
         """
-        random.shuffle(teams)
-        return [(teams[i], teams[len(teams) - 1 - i]) for i in range(len(teams) // 2)]
+        if randomSelect:
+            random.shuffle(teams)
+            return [(teams[i], teams[len(teams) - 1 - i]) for i in range(len(teams) // 2)]
+
+        return [(teams[i], teams[i + 1]) for i in range(0, len(teams), 2)]
+
 
     def simulate_matches(self, matches):
         """Simulate the matches for a stage of the FIFA World Cup.
@@ -47,7 +50,7 @@ class WorldCup:
             matches (list): A list of tuples, each containing two teams.
 
         Returns:
-            list: A list of tuples, each containing two teams and a result.
+            list: A list of tuples, each containing two teams.
         """
         results = []
         for match in matches:
@@ -73,7 +76,6 @@ class WorldCup:
             else:
                 winners.append(match[1])
         return winners
-    # ---------------------------------------------- #
 
     def pots__of_teams(self):
         # get a list of the team names
@@ -144,14 +146,13 @@ class WorldCup:
         return self.determine_winners(matches_with_results)
 
     def quarter_finals(self, teams):
-
-        matches = self.generate_matches(teams)
+        matches = self.generate_matches(teams, False)
         self.quarter_final_matches = matches
         matches_with_results = self.simulate_matches(matches)
         return self.determine_winners(matches_with_results)
 
     def semi_finals(self, teams):
-        matches = self.generate_matches(teams)
+        matches = self.generate_matches(teams, False)
         self.semi_finals_matches = matches
         matches_with_results = self.simulate_matches(matches)
         return self.determine_winners(matches_with_results)

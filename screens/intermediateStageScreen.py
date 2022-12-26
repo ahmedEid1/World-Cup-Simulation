@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 class intermediateStageScreen(tk.Frame):
     def __init__(self, master, teams, matches, teamHeader, matchHeader, stageName):
         super().__init__(master)

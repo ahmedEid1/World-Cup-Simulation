@@ -1,3 +1,10 @@
+'''
+اعضاء المشروع:
+احمد مجدي عبد الرحيم 19
+احمد محمد بدير 20
+احمد عيد ابراهيم حبيبشي 15
+محمد السيد زكي 92
+'''
 import tkinter as tk
 
 from screens.TeamInputScreen import TeamInputScreen
@@ -49,6 +56,7 @@ class MainWindow(tk.Tk):
         if teams:
             self.worldCup = WorldCup(teams)
             self.setWorldCup(self.worldCup)
+
             self.screen0 = GroupStageScreen(self, self.pots, self.groups)
             self.screen1 = intermediateStageScreen(self, self.knockout_stage_winners, self.round_of_16_matchs,
                                                     "Round of 16 Teams.",
@@ -87,5 +95,4 @@ class MainWindow(tk.Tk):
 
 
 if __name__ == '__main__':
-
     window = MainWindow()
